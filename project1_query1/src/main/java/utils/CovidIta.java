@@ -1,10 +1,12 @@
+package utils;
+
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class COVID implements Serializable {
+public class CovidIta implements Serializable {
 
     private int positive;
     private String date;
@@ -13,7 +15,7 @@ public class COVID implements Serializable {
     private int tampons;
 
 
-    public COVID(String date, String positive, String tampons) {
+    public CovidIta(String date, String positive, String tampons) {
 
         this.tampons =Integer.parseInt(tampons);
         this.positive = Integer.parseInt(positive);
