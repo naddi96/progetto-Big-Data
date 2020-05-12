@@ -9,6 +9,11 @@ public class CovidGlob implements Serializable {
     String country;
     Double lineCoefficent;
     List<Integer> contagiati;
+    List<Integer> max_weeks;
+    List<Integer> min_weeks;
+    List<Double>  deviation_weeks;
+    
+
 
     public CovidGlob(String state, String country, List<Integer> contagiati) {
         this.state = state;
@@ -23,7 +28,7 @@ public class CovidGlob implements Serializable {
     public String getCountry() {
         return country;
     }
-
+    
 
 
     public List<Integer> getContagiati() {
@@ -40,5 +45,19 @@ public class CovidGlob implements Serializable {
 
     public void setContagiati(List<Integer> contagiati) {
         this.contagiati = contagiati;
+    }
+
+    public Double getLineCoefficent() {
+        return lineCoefficent;
+    }
+
+    public void setLineCoefficent(Double lineCoefficent) {
+        this.lineCoefficent = lineCoefficent;
+    }
+
+    @Override
+    public String toString() {
+        return "CovidGlob [continet=" + continet + ", country=" + country + ", lineCoefficent=" + lineCoefficent
+                + ", state=" + state + "]";
     }
 }
