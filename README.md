@@ -7,7 +7,7 @@
 
 ## compile the code
 
-Compile the java code inside "project1" folder with 
+Compile the java code inside "progetto1" folder with 
 
 - `mvn deploy`
 
