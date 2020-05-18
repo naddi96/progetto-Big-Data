@@ -22,7 +22,7 @@ This application allows to deploy multi-nodes hadoop cluster with spark 2.4.1 on
 - Access to spark Web UI : <container ip>:8080
 - Access to hdfs Web UI : <container ip>:50070
   
-### For upload the code to hdfs:
+## Upload jar binary to hdfs:
 #### (its also uploaded when the container is started the the default jar is progetto1-1.0.jar ):
 
 - `./uploadJarHdfs.sh`
