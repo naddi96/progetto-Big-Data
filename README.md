@@ -2,27 +2,27 @@
 
 ## Clone the repository
 
-- git clone git@github.com:naddi96/progetto-Big-Data.git
+- `git clone git@github.com:naddi96/progetto-Big-Data.git`
 
 
 ## compile the code
 
 Compile the java code inside "project1" folder with 
 
-- mvn deploy
+- `mvn deploy`
 
 then copy the .jar file inside the target folder into "infrastruttura-container/spark"
 
-- cp target/progetto1-1.0.jar  infrastruttura-container/spark
+- `cp target/progetto1-1.0.jar  infrastruttura-container/spark`
 
 ## start containers
 
 for starting the container infrastructure go inside the "infrastruttura-container" and follow the READMEs files inside this folders:
 
-    - spark
-    - nifi
-    - livy
-    - hbase
+   - spark
+   - nifi
+   - livy
+   - hbase
 
 and start the containers
 
