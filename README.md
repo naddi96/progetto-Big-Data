@@ -35,4 +35,12 @@ and start the processing from nifi
 
 the web interface for plotting the data from Hbase is Left as an exercise to the reader.
 
+## DataSets used in this project
+   
+   https://github.com/dbouquin/IS_608/blob/master/NanosatDB_munging/Countries-Continents.csv
+   
+   https://github.com/pcm-dpc/COVID-19/blob/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv
+   
+   https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv
+
 
