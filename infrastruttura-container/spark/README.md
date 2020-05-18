@@ -11,7 +11,7 @@ This application allows to deploy multi-nodes hadoop cluster with spark 2.4.1 on
 - Run './dowloadSpark.sh'
 
 ## Run  
-- Run `./startHadoopCluster.sh`
+- Run '/startHadoopCluster.sh'
 - Access to master `docker exec -it mycluster-master bash`
 
 ### Run spark applications on cluster : 
@@ -25,10 +25,10 @@ This application allows to deploy multi-nodes hadoop cluster with spark 2.4.1 on
 ### For upload the code to hdfs:
 #### (its also uploaded when the container is started the the default jar is progetto1-1.0.jar ):
 
-- ./uploadJarHdfs.sh
+- './uploadJarHdfs.sh'
 
 
 ## Stop 
-- ./stopAndRemove.sh
+- './stopAndRemove.sh'
 
 
