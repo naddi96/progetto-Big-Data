@@ -1,6 +1,7 @@
-package utils;
+package parseParquet;
 
 import org.apache.spark.sql.Row;
+import utils.CovidIta;
 
 import java.util.Arrays;
 import java.util.Collections;

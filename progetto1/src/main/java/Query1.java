@@ -9,10 +9,9 @@ import scala.Tuple2;
 
 import java.io.Serializable;
 import java.util.Comparator;
-import java.util.Iterator;
-import java.util.ListIterator;
+
 import utils.CovidIta;
-import utils.ParqueIta;
+import parseParquet.ParqueIta;
 //import scala.Tuple2;
 
 public class Query1 {
@@ -23,6 +22,8 @@ public class Query1 {
     private static String pathToFile ="hdfs://mycluster-master:9000/user/nifi/covidIta/covidIta.parquet";
     private static String pathToOutput = "hdfs://mycluster-master:9000/user/nifi/covidIta/output/";
 
+
+
     public static void main(String[] args) {
 /*
         String outputPath = "output";
@@ -32,28 +33,28 @@ public class Query1 {
 
         SparkConf conf = new SparkConf()
                 .setMaster("local")
-
                 .setAppName("query");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
 */
-        JavaSparkContext sc = new JavaSparkContext(new SparkConf());
+        SparkConf conf = new SparkConf().setAppName("query1");
+        JavaSparkContext sc = new JavaSparkContext(conf);
 
 
         SparkSession spark = SparkSession.builder().config(sc.getConf()).getOrCreate();
         JavaRDD<Row> parquetFileDF=spark.
-                read().parquet("pathToFile").javaRDD();
+                read().parquet(pathToFile).javaRDD();
 
 
 
 
         JavaRDD<CovidIta> cov =
                 parquetFileDF.flatMap(line -> ParqueIta.parseRow(line));
-                        // line -> OutletParser.parseJson(line))         // JSON
 
         JavaPairRDD<Integer,Tuple2<Float,Float>> pairs =
                 cov.mapToPair(co -> new Tuple2<Integer,
-                        Tuple2<Float,Float>>(co.getWeek(), new Tuple2<Float, Float>(- (float) co.getPositive(),- (float) co.getTampons())));
+                        Tuple2<Float,Float>>(co.getWeek(),
+                        new Tuple2<Float, Float>(- (float) co.getPositive(),- (float) co.getTampons())));
 
 
         JavaPairRDD<Integer, Tuple2<Float,Float>> avg_week =
@@ -64,6 +65,7 @@ public class Query1 {
                 new StructField("AnnoSettimana", DataTypes.IntegerType, true, Metadata.empty()),
                 new StructField("guariti", DataTypes.FloatType, true, Metadata.empty()),
                 new StructField("tamponi", DataTypes.FloatType, true, Metadata.empty())
+
         };
         StructType structType = DataTypes
                 .createStructType(structFields);
@@ -73,6 +75,9 @@ public class Query1 {
 //       output.write().parquet("hdfs://mycluster-master:9000/user/nifi/covidIta/output/");
 
         }
+
+
+
 
     public static Tuple2<Float, Float> mediaOutput(Tuple2<Float,Float> a, Tuple2<Float,Float> b){
         float max_gua= Math.max(-a._1,-b._1);

@@ -9,10 +9,6 @@ public class CovidGlob implements Serializable {
     String country;
     Double lineCoefficent;
     List<Integer> contagiati;
-    List<Integer> max_weeks;
-    List<Integer> min_weeks;
-    List<Double>  deviation_weeks;
-    
 
 
     public CovidGlob(String state, String country, List<Integer> contagiati) {

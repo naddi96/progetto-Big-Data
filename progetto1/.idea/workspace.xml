@@ -1,11 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dee3f75d-4a85-4f57-be22-c57af8007a5f" name="Default Changelist" comment="" />
+    <list default="true" id="dee3f75d-4a85-4f57-be22-c57af8007a5f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../infrastruttura-container/nifi/startNifi.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../infrastruttura-container/nifi/startNifi.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Query1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Query1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Query2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Query2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CovidContinent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CovidGlob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CovidGlob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CsvGlob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parseCsv/CsvGlob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CsvIta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parseCsv/CsvIta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ParqueIta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parseParquet/ParqueIta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Query1$ValueComparator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Query1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Query2$ValueComparator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Query2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hbase/DataLoaderQuery1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hbase/HBaseClient$ALTER_COLUMN_FAMILY.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hbase/HBaseClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/CovidContinent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/CovidGlob.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/CovidIta.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/CsvGlob.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/CsvIta.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/ParqueIta.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.jar.md5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.jar.sha1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.pom.md5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.pom.sha1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/maven-metadata.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/maven-metadata.xml.md5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/maven-metadata.xml.sha1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/progetto1-1.0.jar" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -15,6 +65,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1c5IDt7rlkvrZSODUFe87ozebKI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -22,19 +73,40 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\naddi\Downloads\progetto1\src\main\java" />
     </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
+      <command value="mvn compile" />
       <command value="mvn deploy" />
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="prova" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="prova" />
+      <module name="progetto1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.prova" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -54,25 +126,49 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="186" key="#Project_Structure/0.0.1920.1050@0.0.1920.1050" timestamp="1589812053424" />
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1589812610871">
+    <state x="432" y="454" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1589832137829">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1589812610871" />
-    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1589812610871">
+    <state x="432" y="454" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1589832137829" />
+    <state x="761" y="394" width="398" height="266" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1589831247103">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1589812610871" />
-    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1589812610871">
+    <state x="761" y="394" width="398" height="266" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1050@0.0.1920.1050" timestamp="1589831247103" />
+    <state x="761" y="414" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1589832139775">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1589812610871" />
-    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1589812610871">
+    <state x="761" y="414" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1050@0.0.1920.1050" timestamp="1589832139775" />
+    <state x="711" y="385" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1589898069623">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1589812610871" />
-    <state x="616" y="243" width="672" height="677" key="run.anything.popup" timestamp="1589812555669">
+    <state x="711" y="385" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1050@0.0.1920.1050" timestamp="1589898069623" />
+    <state width="1877" height="280" key="GridCell.Tab.0.bottom" timestamp="1589904104492">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1589812555669" />
+    <state width="1877" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1589904104492" />
+    <state width="1877" height="280" key="GridCell.Tab.0.center" timestamp="1589904104492">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="280" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1589904104492" />
+    <state width="1877" height="280" key="GridCell.Tab.0.left" timestamp="1589904104492">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="280" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1589904104492" />
+    <state width="1877" height="280" key="GridCell.Tab.0.right" timestamp="1589904104492">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="280" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1589904104492" />
+    <state x="533" y="239" key="RollbackChangesDialog" timestamp="1589836115221">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="533" y="239" key="RollbackChangesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1589836115221" />
+    <state x="1003" y="333" width="672" height="677" key="run.anything.popup" timestamp="1589904104507">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="1003" y="333" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1589904104507" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1589895556610">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1589895556610" />
   </component>
 </project>
