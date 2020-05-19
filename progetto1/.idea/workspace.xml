@@ -1,47 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dee3f75d-4a85-4f57-be22-c57af8007a5f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../infrastruttura-container/nifi/startNifi.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../infrastruttura-container/nifi/startNifi.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Query1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Query1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Query2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Query2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CovidContinent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CovidGlob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CovidGlob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CsvGlob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parseCsv/CsvGlob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CsvIta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parseCsv/CsvIta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ParqueIta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parseParquet/ParqueIta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Query1$ValueComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Query1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Query2$ValueComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Query2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hbase/DataLoaderQuery1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hbase/HBaseClient$ALTER_COLUMN_FAMILY.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hbase/HBaseClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/CovidContinent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/CovidGlob.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/CovidIta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/CsvGlob.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/CsvIta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/ParqueIta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.jar.md5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.jar.sha1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.pom" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.pom.md5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.pom.sha1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/maven-metadata.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/maven-metadata.xml.md5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/maven-metadata.xml.sha1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/progetto1-1.0.jar" beforeDir="false" />
-    </list>
+    <list default="true" id="dee3f75d-4a85-4f57-be22-c57af8007a5f" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,22 +102,22 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="711" y="385" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1050@0.0.1920.1050" timestamp="1589898069623" />
-    <state width="1877" height="280" key="GridCell.Tab.0.bottom" timestamp="1589904104492">
+    <state width="1877" height="280" key="GridCell.Tab.0.bottom" timestamp="1589912890283">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1589904104492" />
-    <state width="1877" height="280" key="GridCell.Tab.0.center" timestamp="1589904104492">
+    <state width="1877" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1589912890283" />
+    <state width="1877" height="280" key="GridCell.Tab.0.center" timestamp="1589912890283">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="280" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1589904104492" />
-    <state width="1877" height="280" key="GridCell.Tab.0.left" timestamp="1589904104492">
+    <state width="1877" height="280" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1589912890283" />
+    <state width="1877" height="280" key="GridCell.Tab.0.left" timestamp="1589912890282">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="280" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1589904104492" />
-    <state width="1877" height="280" key="GridCell.Tab.0.right" timestamp="1589904104492">
+    <state width="1877" height="280" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1589912890282" />
+    <state width="1877" height="280" key="GridCell.Tab.0.right" timestamp="1589912890283">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="280" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1589904104492" />
+    <state width="1877" height="280" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1589912890283" />
     <state x="533" y="239" key="RollbackChangesDialog" timestamp="1589836115221">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
