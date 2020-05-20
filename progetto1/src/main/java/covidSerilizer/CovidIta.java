@@ -1,4 +1,4 @@
-package utils;
+package covidSerilizer;
 
 import java.io.Serializable;
 import java.text.ParseException;
@@ -9,20 +9,19 @@ import java.util.Date;
 public class CovidIta implements Serializable {
 
     private int positive;
-    private String date;
-    private int day;
+    private int year;
     private int week;
     private int tampons;
 
 
-    public CovidIta(String date, String positive, String tampons) {
+    public CovidIta(String date, String positive, String tampons, int startingDay) {
 
         this.tampons =Integer.parseInt(tampons);
         this.positive = Integer.parseInt(positive);
 
 
         String input = date.substring(0,10);
-        this.date =input;
+
         String format = "yyyy-MM-dd";
 
         SimpleDateFormat df = new SimpleDateFormat(format);
@@ -33,18 +32,16 @@ public class CovidIta implements Serializable {
             e.printStackTrace();
         }
 
-
         Calendar cal = Calendar.getInstance();
-
         cal.setTime(dat);
-        this.week = Integer.parseInt(String.valueOf(cal.get(Calendar.YEAR)) +String.valueOf(cal.get(Calendar.WEEK_OF_YEAR)));
-        this.day= cal.get(Calendar.DAY_OF_WEEK);
+        cal.add(Calendar.DATE,startingDay);   //calcolo la settimana in base al giorno della settimana di partenza
 
-        if (!(this.day == 1 || this.day == 7)) {
+        int day= cal.get(Calendar.DAY_OF_WEEK);
+        this.year=cal.get(Calendar.YEAR);
+        if (!(day == 1 || day == 7)) {
             this.tampons=-1;
             this.positive=-1;
             this.week=-1;
-            this.day=-1;
 
         }
 
@@ -60,15 +57,15 @@ public class CovidIta implements Serializable {
         return positive;
     }
 
-    public String getDate() {
-        return date;
+    public int getYear() {
+        return year;
     }
-    public int getDay(){return day;}
+
 
     public int getWeek() {return week;}
 
     @Override
     public String toString() {
-        return date.toString()+" "+day+" "+week;
+        return String.valueOf(year)+String.valueOf(week);
     }
 }

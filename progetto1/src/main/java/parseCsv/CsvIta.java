@@ -1,12 +1,14 @@
 package utils;
 
+import covidSerilizer.CovidIta;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 
 public class CsvIta {
 
-    public static Iterator<CovidIta> parseCSV(String csvLine) {
+    public static Iterator<CovidIta> parseCSV(String csvLine,int startingDay) {
 
         CovidIta cov = null;
         String[] csvValues = csvLine.split(",");
@@ -22,7 +24,8 @@ public class CsvIta {
         cov = new CovidIta(
                 csvValues[0], // date
                 csvValues[1], // guariti
-                csvValues[2] // tampons
+                csvValues[2], // tampons
+                startingDay
         );
 
         if(cov.getTampons()==-1){

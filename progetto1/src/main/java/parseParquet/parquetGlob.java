@@ -3,7 +3,7 @@ package parseParquet;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
 import org.apache.spark.sql.Row;
 import scala.Tuple2;
-import utils.CovidGlob;
+import covidSerilizer.CovidGlob;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,31 +1,35 @@
 package parseParquet;
 
 import org.apache.spark.sql.Row;
-import utils.CovidIta;
+import covidSerilizer.CovidIta;
+import scala.Tuple2;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 
 public class ParqueIta {
-    public static Iterator<CovidIta> parseRow(Row line) {
+    public static Iterator<Tuple2<Integer,Tuple2<Float,Float>>> parseRow(Row line,int startingDay) {
 
-        CovidIta cov = null;
-        //   if (csvValues.length != 7)
-        //     return null;
-
-//            1464894,1377987280,3.216,0,1,0,3
-
-        cov = new CovidIta(
+        CovidIta cov = new CovidIta(
                 line.getString(0), // date
                 line.getString(1), // guariti
-                line.getString(2)// tampons
+                line.getString(2),// tampons
+                startingDay
         );
 
+
         if(cov.getTampons()==-1){
-            return Collections.<CovidIta> emptyList().iterator();
+            return Collections.<Tuple2<Integer,Tuple2<Float,Float>>> emptyList().iterator();
         }else{
-            return Arrays.asList(cov).iterator();
+
+            return Arrays.asList(
+                new Tuple2<>(//cambio il segno inquanto successivamente lo
+                        // ricambierò alle sole  coppie di giorni nella stessa settimana dentro la map to pair in modo tale da distingurli                                 si questo commento da fastidio LMAO
+                        Integer.valueOf(cov.toString()), //AnnoSettimana
+                            new Tuple2<>(-(float) cov.getPositive(),//Positivi
+                                        -(float) cov.getTampons()))//tamponi
+            ).iterator();
         }
     }
 }

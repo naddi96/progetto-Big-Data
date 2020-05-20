@@ -3,7 +3,7 @@ package parseCsv;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
 
 import scala.Tuple2;
-import utils.CovidGlob;
+import covidSerilizer.CovidGlob;
 
 import java.util.*;
 
@@ -20,16 +20,17 @@ public class CsvGlob {
         }
 
         int lun = csvValues.length;
-        List<Integer> lisat = new ArrayList<>();
+        List<Integer> lista_giorni = new ArrayList<>();
         int i = startingDay+4;
         int offset=i;
         SimpleRegression regression = new SimpleRegression();
         
-        
+
+        //trasformo da lista comulativa a lista dei nuovi casi per giorno
         int m=0;
         while (i < lun) {
             int app =Integer.valueOf(csvValues[i]);
-            lisat.add(app-m);
+            lista_giorni.add(app-m);
             regression.addData(i-offset, app);
             m=app;
             i++;
@@ -38,7 +39,7 @@ public class CsvGlob {
         CovidGlob cov =new CovidGlob(
                 csvValues[0].replace("\"",""),
                 csvValues[1].replace("\"",""),
-                lisat
+                lista_giorni
         );
 
         return Arrays.asList(

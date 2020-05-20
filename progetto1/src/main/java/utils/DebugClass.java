@@ -1,3 +1,5 @@
+package utils;
+
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.RowFactory;
 
@@ -8,9 +10,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class prova {
+public class DebugClass {
 
-    private static int startingDay=20;
+    private static int startingDay=0;
 
     private static String firstDate="1/22/20";
     public static void main(String[] args) throws InterruptedException {
@@ -27,8 +29,9 @@ public class prova {
         }
         Calendar c = Calendar.getInstance();
         c.setTime(dat);
-        c.add(Calendar.DATE, startingDay);
-
+        System.out.println(c.get(Calendar.DAY_OF_YEAR));
+        c.add(Calendar.DATE, -startingDay);
+        System.out.println(c.get(Calendar.DAY_OF_YEAR));
         int i=300;
         while(i!=0){
 

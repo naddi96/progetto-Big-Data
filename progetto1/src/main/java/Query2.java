@@ -1,7 +1,3 @@
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.util.Progressable;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
@@ -15,13 +11,12 @@ import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
 import parseCsv.CsvGlob;
 import scala.Tuple2;
-import utils.CovidGlob;
+import covidSerilizer.CovidGlob;
 
 import utils.GlobMapFunc;
 import utils.HDFS;
 
 import java.io.*;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,6 +25,7 @@ import java.util.*;
 public class Query2 {
 
     private static String hdfs_master="hdfs://mycluster-master:9000";
+
     private static int lunedi=5;
     private static int martedi=6;
     private static int mercoledi=0;
@@ -71,13 +67,18 @@ public class Query2 {
 
 
         JavaRDD<String> rdd = sc.textFile(pathToFile);
+
+
+        //uso il csv inquanto nifi ha problemi a cambiare il formato in parquet in questo csv
+        //uso la maptopair inquanto non considero l'header del csv
         JavaPairRDD<Double, CovidGlob> pairs = rdd.flatMapToPair(line -> CsvGlob.parseCSV(line, startingDay));
 
         List<Tuple2<Double, CovidGlob>> top_100 = pairs.top(100,
                 new ValueComparator<>(Comparator.<Double>naturalOrder()));
 
         JavaRDD<Tuple2<Double, CovidGlob>> top_100_rdd = sc.parallelize(top_100);
-        JavaPairRDD<String, CovidGlob> covid_state_key = top_100_rdd.mapToPair(f -> GlobMapFunc.makeCountryKey(f));
+
+        JavaPairRDD<String, CovidGlob> covid_state_key = top_100_rdd.mapToPair(f -> GlobMapFunc.makeCountryKey(f)).cache();
 
         JavaRDD<Row> line_continet=spark.read().parquet(continentToContry).javaRDD();
 
@@ -101,16 +102,16 @@ public class Query2 {
         JavaPairRDD<String, List<Integer>>
                 key_continent = joined_state_continent.mapToPair(f -> GlobMapFunc.makeContinentKey(f));
 
+
         JavaPairRDD<String, List<Integer>>
                 sum_states_in_cont = key_continent.reduceByKey((x, y) -> GlobMapFunc.sommaStati(x, y));
 
         JavaRDD<Row>
                 rowRDD=sum_states_in_cont.flatMap(f-> GlobMapFunc.computeStatistics(f));
-        System.out.println(rowRDD.take(1).get(0));
 
         Row row = rowRDD.take(1).get(0);
-
         int len =row.length()-3;
+
         StructType schema = createSchema(len);
         Dataset<Row> output = spark.createDataFrame(rowRDD, schema);
         output.write().mode("overwrite").parquet(pathToOutput);

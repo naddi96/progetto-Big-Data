@@ -1,4 +1,4 @@
-package utils;
+package covidSerilizer;
 
 import java.io.Serializable;
 import java.util.List;

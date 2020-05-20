@@ -14,12 +14,25 @@ import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
 
-import utils.CovidIta;
+import covidSerilizer.CovidIta;
 import parseParquet.ParqueIta;
 import utils.HDFS;
 //import scala.Tuple2;
 
 public class Query1 {
+
+
+    private static int lunedi=0;
+    private static int martedi=1;
+    private static int mercoledi=2;
+    private static int giovedi=3;
+    private static int venerdi=4;
+    private static int sabato=5;
+    private static int domenica=6;
+
+    private static int startingDay=lunedi;
+
+
 
 
     private static String hdfs_master="hdfs://mycluster-master:9000";
@@ -50,25 +63,26 @@ public class Query1 {
 
         long startQueryPro = System.nanoTime();
 
+
         JavaRDD<Row> parquetFileDF=spark.
                 read().parquet(pathToFile).javaRDD();
 
 
 
-
-        JavaRDD<CovidIta> cov =
-                parquetFileDF.flatMap(line -> ParqueIta.parseRow(line));
-
+        //considero solo i giorni di inizio e fine settimana
+                    //week ,    positive,tampons
         JavaPairRDD<Integer,Tuple2<Float,Float>> pairs =
-                cov.mapToPair(co -> new Tuple2<Integer,
-                        Tuple2<Float,Float>>(co.getWeek(),
-                        new Tuple2<Float, Float>(- (float) co.getPositive(),- (float) co.getTampons())));
+                parquetFileDF.flatMapToPair(line -> ParqueIta.parseRow(line,startingDay));
 
-
+                        //week ,    positive,tampons
         JavaPairRDD<Integer, Tuple2<Float,Float>> avg_week =
                 pairs.reduceByKey((x, y) ->mediaOutput(x,y)).filter(f-> f._2._1 > 0 );
+
+
+        //coversione a formato parquet
         JavaRDD<Row> rowRDD = avg_week.map(tuple -> RowFactory.create(tuple._1,tuple._2._1,tuple._2._2 ));
 
+        //creazione dello schema
         StructField[] structFields = new StructField[]{
                 new StructField("AnnoSettimana", DataTypes.IntegerType, true, Metadata.empty()),
                 new StructField("guariti", DataTypes.FloatType, true, Metadata.empty()),
@@ -80,9 +94,8 @@ public class Query1 {
 
         Dataset<Row> output = spark.createDataFrame(rowRDD, structType);
         output.write().mode("overwrite").parquet(pathToOutput);
-//      output.write().parquet("hdfs://mycluster-master:9000/user/nifi/covidIta/output/");
-
         long endQueryPro = System.nanoTime();
+
         long sparkTimeNano= ( endTimeSparkConf - startTimeSparkConf ) ;
         float sparkTimeSec= (float) ( endTimeSparkConf - startTimeSparkConf )/1000000000 ;
         long queryTimeNano= ( endQueryPro - startQueryPro );
@@ -105,6 +118,9 @@ public class Query1 {
 
 
     public static Tuple2<Float, Float> mediaOutput(Tuple2<Float,Float> a, Tuple2<Float,Float> b){
+        //inizialmente ho memorizzato i segni in negativo adesso li ricambio solo
+        //per i giorni che sono nella stessa settimana -> gli eventuali giorni singoli resteranno negativi
+
         float max_gua= Math.max(-a._1,-b._1);
         float max_tam= Math.max(-a._2,-b._2);
         float min_gua =Math.min(-a._1,-b._1);
