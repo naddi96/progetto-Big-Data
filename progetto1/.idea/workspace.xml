@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dee3f75d-4a85-4f57-be22-c57af8007a5f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Query1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Query1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Query2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Query2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/prova.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/prova.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Query1$ValueComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Query1$ValueComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Query1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Query1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Query2$ValueComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Query2$ValueComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Query2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Query2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/prova.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/prova.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/progetto1-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/progetto1-1.0.jar" afterDir="false" />
-    </list>
+    <list default="true" id="dee3f75d-4a85-4f57-be22-c57af8007a5f" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
