@@ -13,7 +13,8 @@ public class prova {
     private static int startingDay=20;
 
     private static String firstDate="1/22/20";
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        long startTime = System.nanoTime();
 
 
         String format = "MM/dd/yy";
@@ -27,6 +28,7 @@ public class prova {
         Calendar c = Calendar.getInstance();
         c.setTime(dat);
         c.add(Calendar.DATE, startingDay);
+
         int i=300;
         while(i!=0){
 
@@ -36,6 +38,15 @@ public class prova {
 
             i--;
         }
+
+
+        long endTime = System.nanoTime();
+        long durationSec = ((endTime - startTime)/ 1000000000);
+        long durationNanoSec=(endTime - startTime);
+
+
+        System.out.println("Seconds:"+durationSec );
+        System.out.println("NanoSeconds:"+durationNanoSec );
 
 
     }

@@ -1,3 +1,7 @@
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.util.Progressable;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
@@ -14,14 +18,18 @@ import scala.Tuple2;
 import utils.CovidGlob;
 
 import utils.GlobMapFunc;
+import utils.HDFS;
 
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.io.Serializable;
 
 public class Query2 {
 
+    private static String hdfs_master="hdfs://mycluster-master:9000";
     private static int lunedi=5;
     private static int martedi=6;
     private static int mercoledi=0;
@@ -35,16 +43,32 @@ public class Query2 {
     private static String firstDate="1/22/20";
 
 
-    private static String pathToFile = "hdfs://mycluster-master:9000/user/nifi/covidWor/covidWor.csv";
-    private static String continentToContry = "hdfs://mycluster-master:9000/user/nifi/covidWor/Countries-Continents.parquet";
-    private static String pathToOutput="hdfs://mycluster-master:9000/user/nifi/covidWor/output/";
 
-    public static void main(String[] args) {
+    private static String pathToFile =  hdfs_master+"/user/nifi/covidWor/covidWor.csv";
+    private static String continentToContry = hdfs_master+"/user/nifi/covidWor/Countries-Continents.parquet";
+    private static String pathToOutput = hdfs_master+"/user/nifi/covidWor/output/";
 
+    public static void main(String[] args) throws IOException, URISyntaxException {
+
+        /*
+        pathToFile="/data/covidWor.csv"
+        pathToOutput="/data/out/covidWor.out"
+        String outputPath = "output";
+        SparkConf conf = new SparkConf()
+                .setMaster("local")
+                .setAppName("query2");
+        JavaSparkContext sc = new JavaSparkContext(conf);
+        */
+        long startTimeSparkConf = System.nanoTime();
 
         SparkConf conf = new SparkConf().setAppName("query2");
         JavaSparkContext sc = new JavaSparkContext(conf);
         SparkSession spark = SparkSession.builder().config(sc.getConf()).getOrCreate();
+
+        long endTimeSparkConf = System.nanoTime();
+
+        long startQueryPro = System.nanoTime();
+
 
         JavaRDD<String> rdd = sc.textFile(pathToFile);
         JavaPairRDD<Double, CovidGlob> pairs = rdd.flatMapToPair(line -> CsvGlob.parseCSV(line, startingDay));
@@ -89,14 +113,28 @@ public class Query2 {
         int len =row.length()-3;
         StructType schema = createSchema(len);
         Dataset<Row> output = spark.createDataFrame(rowRDD, schema);
-        output.javaRDD().collect();
-
         output.write().mode("overwrite").parquet(pathToOutput);
 
+        long endQueryPro = System.nanoTime();
+        long sparkTimeNano= ( endTimeSparkConf - startTimeSparkConf ) ;
+        float sparkTimeSec= (float) ( endTimeSparkConf - startTimeSparkConf )/1000000000 ;
+        long queryTimeNano= ( endQueryPro - startQueryPro );
+        float queryTimeSec= (float) ( endQueryPro - startQueryPro )/1000000000 ;
+
+
+        String filename=new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss").format(new Date())+"time.txt";
+        String time="****************QUERY2***************\n" +
+                    "loading contex: "+sparkTimeSec+" Sec. \n" +
+                    "loading contex: "+sparkTimeNano+" NanoSec.\n" +
+                    "*************************************\n " +
+                    "query process: "+queryTimeSec+" Sec. \n" +
+                    "query process: "+queryTimeNano+" NanoSec.\n" +
+                    "*************************************\n ";
+
+        HDFS.saveStringTohdfs(hdfs_master,filename,time,"time_query2");
     }
 
     private static StructType createSchema(int len){
-
         String format = "MM/dd/yy";
         SimpleDateFormat df = new SimpleDateFormat(format);
         Date dat = null;
@@ -127,6 +165,7 @@ public class Query2 {
         return  DataTypes.createStructType(fields);
     }
 
+
     private static class ValueComparator<K, V> implements Comparator<Tuple2<K, V>>, Serializable {
 
         private Comparator<K> comparator;
@@ -141,5 +180,7 @@ public class Query2 {
         }
 
     }
+
+
 
 }

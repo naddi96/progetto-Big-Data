@@ -7,41 +7,49 @@ import org.apache.spark.sql.types.*;
 import scala.Tuple2;
 
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
+import java.util.Date;
 
 import utils.CovidIta;
 import parseParquet.ParqueIta;
+import utils.HDFS;
 //import scala.Tuple2;
 
 public class Query1 {
 
 
-
-    //private static String pathToFile = "data/dpc-covid19-ita-andamento-nazionale.csv";
-    private static String pathToFile ="hdfs://mycluster-master:9000/user/nifi/covidIta/covidIta.parquet";
-    private static String pathToOutput = "hdfs://mycluster-master:9000/user/nifi/covidIta/output/";
-
+    private static String hdfs_master="hdfs://mycluster-master:9000";
+    private static String pathToFile =hdfs_master+"/user/nifi/covidIta/covidIta.parquet";
+    private static String pathToOutput = hdfs_master+"/user/nifi/covidIta/output/";
 
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException, URISyntaxException {
 /*
+        pathToFile="/data/covidIta.csv"
+        pathToOutput="/data/out/covidIta.out"
         String outputPath = "output";
-       if (args.length > 0)
-            outputPath = args[0];
-
 
         SparkConf conf = new SparkConf()
                 .setMaster("local")
-                .setAppName("query");
+                .setAppName("query1");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
 */
+        long startTimeSparkConf = System.nanoTime();
+
         SparkConf conf = new SparkConf().setAppName("query1");
         JavaSparkContext sc = new JavaSparkContext(conf);
-
-
         SparkSession spark = SparkSession.builder().config(sc.getConf()).getOrCreate();
+
+        long endTimeSparkConf = System.nanoTime();
+
+        long startQueryPro = System.nanoTime();
+
         JavaRDD<Row> parquetFileDF=spark.
                 read().parquet(pathToFile).javaRDD();
 
@@ -72,7 +80,24 @@ public class Query1 {
 
         Dataset<Row> output = spark.createDataFrame(rowRDD, structType);
         output.write().mode("overwrite").parquet(pathToOutput);
-//       output.write().parquet("hdfs://mycluster-master:9000/user/nifi/covidIta/output/");
+//      output.write().parquet("hdfs://mycluster-master:9000/user/nifi/covidIta/output/");
+
+        long endQueryPro = System.nanoTime();
+        long sparkTimeNano= ( endTimeSparkConf - startTimeSparkConf ) ;
+        float sparkTimeSec= (float) ( endTimeSparkConf - startTimeSparkConf )/1000000000 ;
+        long queryTimeNano= ( endQueryPro - startQueryPro );
+        float queryTimeSec= (float) ( endQueryPro - startQueryPro )/1000000000 ;
+
+
+        String filename=new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss").format(new Date())+"time.txt";
+        String time="****************QUERY1***************\n" +
+                "loading contex: "+sparkTimeSec+" Sec. \n" +
+                "loading contex: "+sparkTimeNano+" NanoSec.\n" +
+                "*************************************\n " +
+                "query process: "+queryTimeSec+" Sec. \n" +
+                "query process: "+queryTimeNano+" NanoSec.\n" +
+                "*************************************\n ";
+        HDFS.saveStringTohdfs(hdfs_master,filename,time,"time_query1");
 
         }
 
