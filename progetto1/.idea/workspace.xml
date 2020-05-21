@@ -3,27 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="dee3f75d-4a85-4f57-be22-c57af8007a5f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Query1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Query1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Query2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Query2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hbase/DataLoaderQuery1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hbase/HBaseClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parseCsv/CsvGlob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parseCsv/CsvGlob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parseCsv/CsvIta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parseCsv/CsvIta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parseParquet/ParqueIta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parseParquet/ParqueIta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parseParquet/parquetGlob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parseParquet/parquetGlob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/prova.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DebugClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CovidGlob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/covidSerilizer/CovidGlob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CovidIta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/covidSerilizer/CovidIta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/GlobMapFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/GlobMapFunc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Query1$ValueComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Query1$ValueComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Query1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Query1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Query2$ValueComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Query2$ValueComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Query2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Query2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hbase/DataLoaderQuery1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hbase/HBaseClient$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hbase/HBaseClient$ALTER_COLUMN_FAMILY.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hbase/HBaseClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/prova.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,22 +104,22 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="711" y="385" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1050@0.0.1920.1050" timestamp="1589898069623" />
-    <state width="1877" height="373" key="GridCell.Tab.0.bottom" timestamp="1589991590329">
+    <state width="1877" height="341" key="GridCell.Tab.0.bottom" timestamp="1590003509881">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="373" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1589991590329" />
-    <state width="1877" height="373" key="GridCell.Tab.0.center" timestamp="1589991590329">
+    <state width="1877" height="341" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1590003509881" />
+    <state width="1877" height="341" key="GridCell.Tab.0.center" timestamp="1590003509881">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="373" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1589991590329" />
-    <state width="1877" height="373" key="GridCell.Tab.0.left" timestamp="1589991590329">
+    <state width="1877" height="341" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1590003509881" />
+    <state width="1877" height="341" key="GridCell.Tab.0.left" timestamp="1590003509881">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="373" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1589991590329" />
-    <state width="1877" height="373" key="GridCell.Tab.0.right" timestamp="1589991590329">
+    <state width="1877" height="341" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1590003509881" />
+    <state width="1877" height="341" key="GridCell.Tab.0.right" timestamp="1590003509881">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="373" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1589991590329" />
+    <state width="1877" height="341" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1590003509881" />
     <state x="533" y="239" key="RollbackChangesDialog" timestamp="1589836115221">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
