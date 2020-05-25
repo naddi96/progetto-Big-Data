@@ -117,7 +117,7 @@
 %%
 %% This command processes the author and affiliation and title
 %% information and builds the first part of the formatted document.dsd
-\maketitle{Progett 1 [SABD]} 
+\maketitle{} 
 
 \section{Introduzione}
 In questa relazione si descriverà il lavoro svolto che consiste nella realizzazione delle query(1,2) e tutta l'infrastruttura  composta da vari framework istanziati su container docker per l'ingest, process e store dei dati.
@@ -200,15 +200,20 @@ Viene poi ricreato lo schema e viene salvato il dataset processato in formato pa
 
 
 \section{INFRASTRUTTURA DI PROCESSAMENTO}
-
+\includegraphics[width=14cm]{sistema.png}
 
 \subsection{Framework utilizzati}
 
 \subsubsection{Spark: processing} 
-come visto prima si è utilizzato Spark per il processamento delle query 
+come visto prima si è utilizzato Spark per il processamento delle query, nello specifico è stato creato un cluster yarn composto da due worker e un master istanziati su container docker.
+
+
 \subsubsection{NIFI: ingestion}
-Si è utilizzato NiFi per fare data ingestion, nello specifico i dati vengono scaricati da gitHub ogni settimana, sono scremati attraverso una query sql, convertiti in formato parquet e caricati su HDFS (questo per la query1, Nifi non è riuscito a convertire in parquet il dataset della query2 quindi è stato caricato direttamente il csv).
-Di default Nifi non mette a disposizione un modo per comunicare con Spark, Livy viene in nostro (mio) aiuto permettendo a Nifi di inviare job a Spark e di sapere lo stato della computazione, in questo modo Nifi dopo aver finito l'upload dei dati su HDFS puo far iniziare a Spark il processamento e una volta finito Nifi può passare i dati processati al livello di storage
+Si è utilizzato NiFi per fare data ingestion, nello specifico i dati vengono scaricati da gitHub ogni settimana, sono scremati attraverso una query sql, convertiti in formato parquet e caricati su HDFS (questo per la query1, Nifi non è riuscito a convertire in parquet il dataset della query2 quindi è stato caricato direttamente il csv per quest'ultima).
+Di default Nifi non mette a disposizione un modo per comunicare con Spark, Livy viene in nostro (mio) aiuto permettendo a Nifi di inviare job a Spark e di sapere lo stato della computazione, in questo modo Nifi dopo aver finito l'upload dei dati su HDFS puo far iniziare a Spark il processamento e una volta finito Nifi può passare prelevare dati processati da HDFS e passarli al livello di storage \\ \\
+\includegraphics[width=14cm]{livy.png}
+\\ \\
+
 \subsubsection{Livy: layer di comunicazione}
 Livy è un framework che mette a disposizione delle REST API per gestire Spark. In questo progetto è stato usato per far comunicare Nifi con Spark, nello specifico Nifi fa una post con dentro la classe main e la locazione del file jar nell' HDFS  da eseguire;
 successivamente NiFi ogni 5 secondi controlla con una get a Livy lo stato del JoB, quando lo stato risulterà "succeed" Nifi continuerà il suo flusso 
@@ -216,7 +221,7 @@ successivamente NiFi ogni 5 secondi controlla con una get a Livy lo stato del Jo
 \subsubsection{Hbase: Storage}
 Per il layer di storage è stato utilizzato Hbase una volta che Spark ha finito la computazione Nifi si occupa di prendere i file parquet salvati 
 da spark su HDFS processarli come parquet specificare la colonna che si vuole come key e caricarli su hbase.
-Per la query1 come key ho scelto la data (formato annoSettimana)in quanto considerando la quantità dei dati idealmente si vuole la tabella sullo stesso regionserver in modo tale da ottimizzare lo scan di tutta la tabella (query più probabbile che avvenga). Mentre per la seconda query abbiamo righe di questo tipo :
+Per la query1 come key è stata scelta la data (formato annoSettimana) in modo tale da ottimizzare lo scan inquanto i dati saranno memorizzati su posizioni vicine memoria, di contro qualora i dati dovessero diventare troppi si andrebbe a sovraccaricare un singolo region Server però considerata la quantità dei dati non è il caso.  Per la seconda query dopo il processamento abbiamo righe di questo tipo :
 \\
 \\
 \hspace{1000mm}\begin{tabular}{|l|l|l|l|}
@@ -229,7 +234,7 @@ RRREuropa  & europa  & AVG\_WEEK & ... \\ \hline
 \\
 \\
 \\
- come key è stato scelto il campo della prima colonna in questo modo le righe con la stessa funzione statica si troveranno sullo stesso regionserver e vicine tra loro andando ad ottimizare lo scan di tutti i continenti con una determinata funzione statistica 
+ come key è stato scelto il campo della prima colonna, in questo modo le righe con la stessa funzione statica si troveranno sullo stesso regionserver e vicine tra loro ,andando ad ottimizare lo scan di tutti i continenti con una determinata funzione statistica 
 
 
 
