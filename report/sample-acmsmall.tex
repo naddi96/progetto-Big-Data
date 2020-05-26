@@ -124,7 +124,8 @@ In questa relazione si descriverà il lavoro svolto che consiste nella realizzaz
 
 
 \section{Processamento Delle Query}
-Per processare le entrambe le query è stato usato il framework Spark usando le api java.
+Per processare le entrambe le query è stato usato il framework Spark usando le api java, istanziato su cluster yarn all'interno di container docker con un nodo master e due worker.
+Si è utilizzata una macchina virtuale con Ubuntu 20.04 con allocatevi 4 core della cpu (i7-8750H) e 8gb di ram (ddr4 2400 MHz).
 
 \subsection{Query1}
 \begin{quote}
@@ -135,21 +136,21 @@ Una volta caricato il dataset come JavaRDD viene fatta una
 
 \subsubsection{flatMapToPair} 
 in cui viene restituito 
-come chiave il numero della settimana dell'anno e come valore una tupla composta da positivi,tamponi (vengono ignorati i giorni in mezzo alla settimana in base allo startingDay selezionato) successivamente viene fatto
+come chiave il numero della settimana dell'anno e come valore una tupla composta da positivi,tamponi (vengono ignorati i giorni in mezzo alla settimana in base allo startingDay selezionato)
 
 \subsubsection{reduceByKey}
-dove viene calcolata la media dei tamponi e guariti facendo la differenza dei giorni di inizio e fine settimana.
+vengono presi solo i giorni con la stessa settimana dell'anno e viene calcolata la media dei tamponi e guariti facendo la differenza dei giorni di inizio e fine settimana.
 \subsubsection{ricreazione schema}
 Viene poi ricreato lo schema e viene salvato il dataset processato in formato parquet su HDFS
 
 \subsubsection{Tempi}
-è stata tenuta traccia di due tempi: tempo di processamento della query e tempo del caricamento dello spark contex.
+è stata tenuta traccia di due tempi: tempo di processamento della query e tempo del caricamento dello spark contex nel driver program (i tempi sono in media su 5 misurazioni).
 
 \hspace{40mm} \begin{tabular}{l|l|}
 \cline{2-2}
                                        & tempo (sec.) \\ \hline
-\multicolumn{1}{|l|}{Query processing} & 3            \\ \hline
-\multicolumn{1}{|l|}{Spark loading}    & 5            \\ \hline
+\multicolumn{1}{|l|}{Query processing} &   12,5         \\ \hline
+\multicolumn{1}{|l|}{Spark loading}    &   1,5           \\ \hline
 \end{tabular}
 
 \subsection{Query2}
@@ -171,14 +172,14 @@ in cui la chiave è il coefficente di di tread line e il valore è un oggeto
 Vegono presi i top 100 stati con il coefficente di tread line più alto
 
 \subsubsection{mapToPair}
-La chiave vine cambiata dal coefficente di tread line alla nazione il valore rimane l'oggetto  "CovidGlob"
+La chiave vine cambiata dal coefficente di tread line alla nazione, il valore rimane l'oggetto  "CovidGlob"
 
 \subsubsection{Join}
 Viene caricato come javaRDD un dataset esterno al progetto da HDFS preso da \\ \url{https://github.com/dbouquin/IS_608/blob/master/NanosatDB_munging/Countries-Continents.csv}   
-essenziamelte è mapping continete-nazione, viene fatto un a mapToPair per rendere la nazione chiave e poi viene fatto il join con i top 100
+essenziamelte è mapping continete-nazione,ma prima di fare il join viene fatta una mapToPair per rendere la nazione chiave e poi viene fatto il join con i top 100
 
 \subsubsection{mapToPair}
-Per rendere il continente key il valore invece è la lista degli infetti per giorno 
+Per rendere il continente key, il valore invece è la lista degli infetti per giorno 
 \subsubsection{reduceByKey}
 per sommare le liste di infetti con lo stesso continente
 
@@ -189,17 +190,19 @@ lista delle medie,massimi,minimi,deviazioni standard tutte quante per settimana
 Viene poi ricreato lo schema e viene salvato il dataset processato in formato parquet su HDFS
 
 \subsubsection{Tempi}
-è stata tenuta traccia di due tempi: tempo di processamento della query e tempo del caricamento dello spark contex.
+è stata tenuta traccia di due tempi: tempo di processamento della query e tempo delcaricamento dello spark contex nel driver program (i tempi sono in media su 5 misurazioni).
 
 \hspace{40mm} \begin{tabular}{l|l|}
 \cline{2-2}
                                        & tempo (sec.) \\ \hline
-\multicolumn{1}{|l|}{Query processing} & 3            \\ \hline
-\multicolumn{1}{|l|}{Spark loading}    & 5            \\ \hline
+\multicolumn{1}{|l|}{Query processing} & 16,63            \\ \hline
+\multicolumn{1}{|l|}{Spark loading}    & 1,3            \\ \hline
 \end{tabular}
 
 
 \section{INFRASTRUTTURA DI PROCESSAMENTO}
+
+
 \includegraphics[width=14cm]{sistema.png}
 
 \subsection{Framework utilizzati}
@@ -207,10 +210,9 @@ Viene poi ricreato lo schema e viene salvato il dataset processato in formato pa
 \subsubsection{Spark: processing} 
 come visto prima si è utilizzato Spark per il processamento delle query, nello specifico è stato creato un cluster yarn composto da due worker e un master istanziati su container docker.
 
-
 \subsubsection{NIFI: ingestion}
 Si è utilizzato NiFi per fare data ingestion, nello specifico i dati vengono scaricati da gitHub ogni settimana, sono scremati attraverso una query sql, convertiti in formato parquet e caricati su HDFS (questo per la query1, Nifi non è riuscito a convertire in parquet il dataset della query2 quindi è stato caricato direttamente il csv per quest'ultima).
-Di default Nifi non mette a disposizione un modo per comunicare con Spark, Livy viene in nostro (mio) aiuto permettendo a Nifi di inviare job a Spark e di sapere lo stato della computazione, in questo modo Nifi dopo aver finito l'upload dei dati su HDFS puo far iniziare a Spark il processamento e una volta finito Nifi può passare prelevare dati processati da HDFS e passarli al livello di storage \\ \\
+Di default Nifi non mette a disposizione un modo per comunicare con Spark, Livy viene in nostro (mio) aiuto permettendo a Nifi di inviare job a Spark e di sapere lo stato della computazione, in questo modo Nifi dopo aver finito l'upload dei dati su HDFS puo far iniziare a Spark il processamento e una volta finito Nifi può prelevare dati processati da HDFS e passarli al livello di storage \\ \\
 \includegraphics[width=14cm]{livy.png}
 \\ \\
 
@@ -224,7 +226,7 @@ da spark su HDFS processarli come parquet specificare la colonna che si vuole co
 Per la query1 come key è stata scelta la data (formato annoSettimana) in modo tale da ottimizzare lo scan inquanto i dati saranno memorizzati su posizioni vicine memoria, di contro qualora i dati dovessero diventare troppi si andrebbe a sovraccaricare un singolo region Server però considerata la quantità dei dati non è il caso.  Per la seconda query dopo il processamento abbiamo righe di questo tipo :
 \\
 \\
-\hspace{1000mm}\begin{tabular}{|l|l|l|l|}
+\hspace{40mm}\begin{tabular}{|l|l|l|l|}
 \hline
 AAAEuropa  & europa  & MAX\_WEEK & ... \\ \hline
 ZZZamerica & america & MIN\_WEEK & ... \\ \hline
@@ -234,7 +236,7 @@ RRREuropa  & europa  & AVG\_WEEK & ... \\ \hline
 \\
 \\
 \\
- come key è stato scelto il campo della prima colonna, in questo modo le righe con la stessa funzione statica si troveranno sullo stesso regionserver e vicine tra loro ,andando ad ottimizare lo scan di tutti i continenti con una determinata funzione statistica 
+ come key è stato scelto il campo della prima colonna, in questo modo le righe con la stessa funzione statica (cioè tutte le righe con il campo MAX\_WEEK inizieranno con AAA nella prima colonna) si troveranno sullo stesso regionserver e vicine tra loro ,andando ad ottimizare lo scan di tutti i continenti con una determinata funzione statistica 
 
 
 

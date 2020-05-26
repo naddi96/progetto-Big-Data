@@ -16,6 +16,7 @@ import java.util.Date;
 
 import covidSerilizer.CovidIta;
 import parseParquet.ParqueIta;
+import scala.Tuple3;
 import utils.HDFS;
 //import scala.Tuple2;
 
@@ -71,16 +72,16 @@ public class Query1 {
 
         //considero solo i giorni di inizio e fine settimana
                     //week ,    positive,tampons
-        JavaPairRDD<Integer,Tuple2<Float,Float>> pairs =
+        JavaPairRDD<Integer, Tuple3<Float,Float,Boolean>> pairs =
                 parquetFileDF.flatMapToPair(line -> ParqueIta.parseRow(line,startingDay));
 
                    //week ,      positive,tampons
-        JavaPairRDD<Integer, Tuple2<Float,Float>> avg_week =
-                pairs.reduceByKey((x, y) ->mediaOutput(x,y)).filter(f-> f._2._1 > 0 );
+        JavaPairRDD<Integer, Tuple3<Float,Float,Boolean>> avg_week =
+                pairs.reduceByKey((x, y) ->mediaOutput(x,y)).filter(f-> f._2._3().equals(true) );
 
 
         //coversione a formato parquet
-        JavaRDD<Row> rowRDD = avg_week.map(tuple -> RowFactory.create(tuple._1,tuple._2._1,tuple._2._2 ));
+        JavaRDD<Row> rowRDD = avg_week.map(tuple -> RowFactory.create(tuple._1,tuple._2._1(),tuple._2._2() ));
 
         //creazione dello schema
         StructField[] structFields = new StructField[]{
@@ -117,19 +118,20 @@ public class Query1 {
 
 
 
-    public static Tuple2<Float, Float> mediaOutput(Tuple2<Float,Float> a, Tuple2<Float,Float> b){
+    public static Tuple3<Float, Float,Boolean> mediaOutput
+            (Tuple3<Float,Float,Boolean> a, Tuple3<Float,Float,Boolean> b){
         //inizialmente ho memorizzato i segni in negativo adesso li ricambio solo
         //per i giorni che sono nella stessa settimana -> gli eventuali giorni singoli resteranno negativi
 
-        float max_gua= Math.max(-a._1,-b._1);
-        float max_tam= Math.max(-a._2,-b._2);
-        float min_gua =Math.min(-a._1,-b._1);
-        float min_tam= Math.min(-a._2,-b._2);
+        float max_gua= Math.max(a._1(),b._1());
+        float max_tam= Math.max(a._2(),b._2());
+        float min_gua =Math.min(a._1(),b._1());
+        float min_tam= Math.min(a._2(),b._2());
         float gua_med= new Float((max_gua-min_gua) / 7.0) ;
         float tamp_med=new Float((max_tam-min_tam) /  7.0);
 
 
-        return new Tuple2<>(gua_med ,tamp_med);
+        return new Tuple3<>(gua_med ,tamp_med,true);
     }
 
     public static class ValueComparator<K, V> implements Comparator<Tuple2<K, V>>, Serializable {

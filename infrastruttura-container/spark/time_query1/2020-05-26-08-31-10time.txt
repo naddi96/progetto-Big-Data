@@ -1,0 +1,8 @@
+****************QUERY1***************
+loading contex: 1.6226184 Sec. 
+loading contex: 1622618497 NanoSec.
+*************************************
+ query process: 11.491221 Sec. 
+query process: 11491221485 NanoSec.
+*************************************
+ 
