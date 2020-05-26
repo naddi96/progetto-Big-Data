@@ -153,14 +153,14 @@ public class Query2 {
         fields.add(new StructField("Continente", DataTypes.StringType, true, Metadata.empty()));
         //fields.add(new StructField("StatoRegione", DataTypes.StringType, true, Metadata.empty()));
         fields.add(new StructField("Funzione", DataTypes.StringType, true, Metadata.empty()));
-
+        int week=c.get(Calendar.WEEK_OF_YEAR);
         while(len!=0){
 
 
             String annoSet="a"+String.valueOf( c.get(Calendar.YEAR)) + "s"+
-                    String.valueOf(c.get(Calendar.WEEK_OF_YEAR));
+                    String.valueOf(week);
             fields.add(new StructField(annoSet, DataTypes.FloatType, true, Metadata.empty()));
-            c.add(Calendar.DATE, 7);
+            week=week+1;
             len--;
         }
         return  DataTypes.createStructType(fields);

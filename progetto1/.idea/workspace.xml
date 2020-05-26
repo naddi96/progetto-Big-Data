@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dee3f75d-4a85-4f57-be22-c57af8007a5f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../infrastruttura-container/spark/DowloadTimesHdfs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../infrastruttura-container/spark/DowloadTimesHdfs.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../infrastruttura-container/spark/spark-submit-client.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../infrastruttura-container/spark/spark-submit-client.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../infrastruttura-container/spark/stark-submit-client.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../infrastruttura-container/spark/stark-submit-client.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../infrastruttura-container/spark/stopAndRemove.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../infrastruttura-container/spark/stopAndRemove.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../infrastruttura-container/spark/uploadJarHdfs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../infrastruttura-container/spark/uploadJarHdfs.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Query1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Query1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Query2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Query2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/covidSerilizer/CovidIta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/covidSerilizer/CovidIta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Query1$ValueComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Query1$ValueComparator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Query1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Query1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Query2$ValueComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Query2$ValueComparator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Query2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Query2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/progetto1-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/progetto1-1.0.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,10 +137,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="533" y="239" key="RollbackChangesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1589836115221" />
-    <state x="1003" y="333" width="672" height="677" key="run.anything.popup" timestamp="1589971606886">
+    <state x="1003" y="333" width="672" height="677" key="run.anything.popup" timestamp="1590481546554">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="1003" y="333" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1589971606886" />
+    <state x="1003" y="333" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1590481546554" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1589895556610">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

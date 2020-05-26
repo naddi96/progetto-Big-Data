@@ -38,6 +38,7 @@ public class CovidIta implements Serializable {
 
         int day= cal.get(Calendar.DAY_OF_WEEK);
         this.year=cal.get(Calendar.YEAR);
+        this.week=cal.get(Calendar.WEEK_OF_YEAR);
         if (!(day == 1 || day == 7)) {
             this.tampons=-1;
             this.positive=-1;

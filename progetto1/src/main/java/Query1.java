@@ -74,7 +74,7 @@ public class Query1 {
         JavaPairRDD<Integer,Tuple2<Float,Float>> pairs =
                 parquetFileDF.flatMapToPair(line -> ParqueIta.parseRow(line,startingDay));
 
-                        //week ,    positive,tampons
+                   //week ,      positive,tampons
         JavaPairRDD<Integer, Tuple2<Float,Float>> avg_week =
                 pairs.reduceByKey((x, y) ->mediaOutput(x,y)).filter(f-> f._2._1 > 0 );
 
