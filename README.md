@@ -43,4 +43,6 @@ the web interface for plotting the data from Hbase is Left as an exercise to the
    
    https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv
 
+## View of the processing infrastructure
 
+![processing infrastructure](https://github.com/naddi96/progetto-Big-Data/blob/master/report/sistema.png?raw=true)
