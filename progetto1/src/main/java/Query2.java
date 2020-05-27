@@ -78,7 +78,7 @@ public class Query2 {
 
         JavaRDD<Tuple2<Double, CovidGlob>> top_100_rdd = sc.parallelize(top_100);
 
-        JavaPairRDD<String, CovidGlob> covid_state_key = top_100_rdd.mapToPair(f -> GlobMapFunc.makeCountryKey(f)).cache();
+        JavaPairRDD<String, CovidGlob> covid_state_key = top_100_rdd.mapToPair(f -> GlobMapFunc.makeCountryKey(f));
 
         JavaRDD<Row> line_continet=spark.read().parquet(continentToContry).javaRDD();
 
