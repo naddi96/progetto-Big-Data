@@ -1396,12 +1396,13 @@
   July\or August\or September\or October\or November\or
   December\fi~\@acmYear}
 \def\acmPrice#1{\def\@acmPrice{#1}}
+\acmPrice{15.00}
 \def\acmSubmissionID#1{\def\@acmSubmissionID{#1}}
 \acmSubmissionID{}
 \def\acmISBN#1{\def\@acmISBN{#1}}
 \acmISBN{}
 \def\acmDOI#1{\def\@acmDOI{#1}}
-\acmDOI{10.1145/nnnnnnn.nnnnnnn}
+\acmDOI{}
 \newif\if@ACM@badge
 \@ACM@badgefalse
 \newlength\@ACM@badge@width
@@ -1590,8 +1591,61 @@
   \fi}
 \def\setcopyright#1{\setkeys{ACM@}{acmcopyrightmode=#1}}
 \setcopyright{acmcopyright}
-
-\def\@formatdoi#1{}
+\def\@copyrightowner{%
+  \ifcase\acm@copyrightmode\relax % none
+  \or % acmcopyright
+  Damiano Nardi
+  \or % acmlicensed
+  Copyright held by the owner/author(s). Publication rights licensed to
+  ACM\@.
+  \or % rightsretained
+  Copyright held by the owner/author(s).
+  \or % usgov
+  \or % usgovmixed
+  Association for Computing Machinery.
+  \or % cagov
+  Crown in Right of Canada.
+  \or %cagovmixed
+  Association for Computing Machinery.
+  \or %licensedusgovmixed
+  Copyright held by the owner/author(s). Publication rights licensed to
+  ACM\@.
+  \or % licensedcagov
+  Crown in Right of Canada. Publication rights licensed to
+  ACM\@.
+  \or %licensedcagovmixed
+  Copyright held by the owner/author(s). Publication rights licensed to
+  ACM\@.
+  \or % othergov
+  Association for Computing Machinery.
+  \or % licensedothergov
+  Copyright held by the owner/author(s). Publication rights licensed to
+  ACM\@.
+  \or % ic2w3www
+  IW3C2 (International World Wide Web Conference Committee), published
+  under Creative Commons CC-BY~4.0 License.
+  \or % ic2w3wwwgoogle
+  IW3C2 (International World Wide Web Conference Committee), published
+  under Creative Commons CC-BY-NC-ND~4.0 License.
+  \fi}
+\def\@formatdoi#1{\url{}}
+\def\@copyrightpermission{%
+  \ifcase\acm@copyrightmode\relax % none
+  \or % acmcopyright
+   
+  \or % acmlicensed
+   
+  \or % rightsretained
+   
+  \or % usgov
+   
+  \or % usgovmixed
+   
+  \or % cagov
+   
+  \or % cagovmixed
+   
+ \fi}
 \def\copyrightyear#1{\def\@copyrightyear{#1}}
 \copyrightyear{\@acmYear}
 \def\@teaserfigures{}
@@ -1682,7 +1736,7 @@
         \else
           \if@ACM@nonacm\else
             \if@ACM@journal@bibstrip
-              
+              \@permissionCodeOne
               \@formatdoi{\@acmDOI}%
             \else % Conference
               \ifx\@acmISBN\@empty\else ACM~ISBN~\@acmISBN
@@ -2775,7 +2829,7 @@
   \ifx\@tempa\@empty\def\@tempa{arxiv}\fi
   \def\@tempb{arxiv}%
   \ifx\@tempa\@tempb
-     arXiv:\href{https://arxiv.org/abs/#2}{#2}\else arXiv:#2%
+     
   \fi}
 \let\@vspace@orig=\@vspace
 \let\@vspacer@orig=\@vspacer
