@@ -144,7 +144,7 @@ vengono presi solo i giorni con la stessa settimana dell'anno e viene calcolata 
 Viene poi ricreato lo schema e viene salvato il dataset processato in formato parquet su HDFS
 
 \subsubsection{Tempi}
-è stata tenuta traccia di due tempi: tempo di processamento della query e tempo del caricamento dello spark contex nel driver program (i tempi sono in media su 5 misurazioni).
+è stata tenuta traccia di due tempi: tempo di processamento della query (da prima del caricamento a dopo il caricamento dei dati processati)e tempo del caricamento dello spark contex nel driver program (i tempi sono in media su 5 misurazioni).
 
 \hspace{40mm} \begin{tabular}{l|l|}
 \cline{2-2}
@@ -166,8 +166,8 @@ deve essere ricavato. Si considerino 6 continenti: Africa, America, Antartide, A
 
 Una volta caricato il dataset come JavaRDD viene fatta una 
 \subsubsection{flatMapToPair}
-in cui la chiave è il coefficente di di tread line e il valore è un oggeto
-"CovidGlob",all'interno ha la lista dei contagiati, la regione e la nazione, durante questa fase viene calcolato il coefficente di di tread line, la lista degli infetti per giorno viene trasformata da cumulativa alla lista dei nuovi casi per ogni giorno.
+in cui viene restituito come chiave il coefficente di tread line e come valore un oggetto
+"CovidGlob", all'interno ha la lista dei contagiati, la regione e la nazione, durante questa fase viene calcolato il coefficente di di tread line, la lista degli infetti per giorno viene trasformata da cumulativa alla lista dei nuovi casi (per giorno).
 \subsubsection{top 100}
 Vegono presi i top 100 stati con il coefficente di tread line più alto
 
@@ -176,12 +176,12 @@ La chiave vine cambiata dal coefficente di tread line alla nazione, il valore ri
 
 \subsubsection{Join}
 Viene caricato come javaRDD un dataset esterno al progetto da HDFS preso da \\ \url{https://github.com/dbouquin/IS_608/blob/master/NanosatDB_munging/Countries-Continents.csv}   
-essenziamelte è mapping continete-nazione,ma prima di fare il join viene fatta una mapToPair per rendere la nazione chiave e poi viene fatto il join con i top 100
+essenzialmente è mapping continete-nazione, prima di fare il join viene fatta una mapToPair per rendere la nazione chiave e poi viene fatto il join con i top 100
 
 \subsubsection{mapToPair}
 Per rendere il continente key, il valore invece è la lista degli infetti per giorno 
 \subsubsection{reduceByKey}
-per sommare le liste di infetti con lo stesso continente
+Per sommare le liste di infetti con lo stesso continente
 
 \subsubsection{flatMap}
 Per calcolare tutte le statistiche richieste per settimana, viene usata la flatMap in quanto da ogni RDD element verranno generate 4 liste:
@@ -190,7 +190,7 @@ lista delle medie,massimi,minimi,deviazioni standard tutte quante per settimana
 Viene poi ricreato lo schema e viene salvato il dataset processato in formato parquet su HDFS
 
 \subsubsection{Tempi}
-è stata tenuta traccia di due tempi: tempo di processamento della query e tempo delcaricamento dello spark contex nel driver program (i tempi sono in media su 5 misurazioni).
+è stata tenuta traccia di due tempi: tempo di processamento della query (da prima del caricamento a dopo il caricamento dei dati processati su HDFS) e tempo del caricamento dello spark contex nel driver program (i tempi sono in media su 5 misurazioni).
 
 \hspace{40mm} \begin{tabular}{l|l|}
 \cline{2-2}
@@ -208,7 +208,7 @@ Viene poi ricreato lo schema e viene salvato il dataset processato in formato pa
 \subsection{Framework utilizzati}
 
 \subsubsection{Spark: processing} 
-come visto prima si è utilizzato Spark per il processamento delle query, nello specifico è stato creato un cluster yarn composto da due worker e un master istanziati su container docker.
+Come visto prima si è utilizzato Spark per il processamento delle query, nello specifico è stato creato un cluster yarn composto da due worker e un master istanziati su container docker.
 
 \subsubsection{NIFI: ingestion}
 Si è utilizzato NiFi per fare data ingestion, nello specifico i dati vengono scaricati da gitHub ogni settimana, sono scremati attraverso una query sql, convertiti in formato parquet e caricati su HDFS (questo per la query1, Nifi non è riuscito a convertire in parquet il dataset della query2 quindi è stato caricato direttamente il csv per quest'ultima).
@@ -223,7 +223,7 @@ successivamente NiFi ogni 5 secondi controlla con una get a Livy lo stato del Jo
 \subsubsection{Hbase: Storage}
 Per il layer di storage è stato utilizzato Hbase una volta che Spark ha finito la computazione Nifi si occupa di prendere i file parquet salvati 
 da spark su HDFS processarli come parquet specificare la colonna che si vuole come key e caricarli su hbase.
-Per la query1 come key è stata scelta la data (formato annoSettimana) in modo tale da ottimizzare lo scan inquanto i dati saranno memorizzati su posizioni vicine memoria, di contro qualora i dati dovessero diventare troppi si andrebbe a sovraccaricare un singolo region Server però considerata la quantità dei dati non è il caso.  Per la seconda query dopo il processamento abbiamo righe di questo tipo :
+Per la query1 come key è stata scelta la data (formato annoSettimana) in modo tale da ottimizzare lo scan in quanto i dati saranno memorizzati su posizioni vicine memoria, di contro qualora i dati dovessero diventare troppi si andrebbe a sovraccaricare un singolo region Server però considerata la quantità dei dati non è questo il caso.  Per la seconda query dopo il processamento abbiamo righe di questo tipo :
 \\
 \\
 \hspace{40mm}\begin{tabular}{|l|l|l|l|}
@@ -236,7 +236,8 @@ RRREuropa  & europa  & AVG\_WEEK & ... \\ \hline
 \\
 \\
 \\
- come key è stato scelto il campo della prima colonna, in questo modo le righe con la stessa funzione statica (cioè tutte le righe con il campo MAX\_WEEK inizieranno con AAA nella prima colonna) si troveranno sullo stesso regionserver e vicine tra loro ,andando ad ottimizare lo scan di tutti i continenti con una determinata funzione statistica 
+
+ come key è stato scelto il campo della prima colonna, in questo modo le righe con la stessa funzione statica (cioè tutte le righe con il campo MAX\_WEEK inizieranno con AAA nella prima colonna) si troveranno sullo stesso regionserver e vicine tra loro ,andando ad ottimizare lo scan di tutti i continenti con una determinata funzione statistica
 
 
 
