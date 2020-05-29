@@ -31,6 +31,7 @@ docker run  --volume "$PWD":/myapp/ --name $HADOOP_MASTER -h $HADOOP_MASTER --ne
 
 
 # START MULTI-NODES CLUSTER
+docker exec -it $HADOOP_MASTER chmod 600 /root/.ssh/config
 docker exec -it $HADOOP_MASTER "/usr/local/hadoop/spark-services.sh"
 docker exec $HADOOP_MASTER hadoop fs -fs  hdfs://mycluster-master:9000 -put -f /myapp/progetto1-1.0.jar /
 

@@ -36,10 +36,13 @@ public class CovidIta implements Serializable {
         cal.setTime(dat);
         cal.add(Calendar.DATE,startingDay);   //calcolo la settimana in base al giorno della settimana di partenza
 
-        int day= cal.get(Calendar.DAY_OF_WEEK);
+
         this.year=cal.get(Calendar.YEAR);
         this.week=cal.get(Calendar.WEEK_OF_YEAR);
-        if (!(day == 1 || day == 7)) {
+
+        SimpleDateFormat simpleDateformat = new SimpleDateFormat("E"); // the day of the week abbreviated
+        String day = simpleDateformat.format(cal.getTime());
+        if (!(day.equals("lun")|| day.equals("dom"))) {
             this.tampons=-1;
             this.positive=-1;
             this.week=-1;
