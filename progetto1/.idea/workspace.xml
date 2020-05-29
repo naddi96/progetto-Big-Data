@@ -2,10 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dee3f75d-4a85-4f57-be22-c57af8007a5f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../infrastruttura-container/spark/startHadoopCluster.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../infrastruttura-container/spark/startHadoopCluster.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Query1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Query1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/covidSerilizer/CovidIta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/covidSerilizer/CovidIta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/parseParquet/ParqueIta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parseParquet/ParqueIta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/DebugClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DebugClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Query1$ValueComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Query1$ValueComparator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Query1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Query1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/covidSerilizer/CovidIta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/covidSerilizer/CovidIta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/DebugClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DebugClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.jar.md5" beforeDir="false" afterPath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.jar.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.jar.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/1.0/progetto1-1.0.jar.sha1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/maven-metadata.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/maven-metadata.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/maven-metadata.xml.md5" beforeDir="false" afterPath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/maven-metadata.xml.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/maven-metadata.xml.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/target/org/naddi/progetto1/progetto1/maven-metadata.xml.sha1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/progetto1-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/progetto1-1.0.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,30 +119,30 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="711" y="385" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1050@0.0.1920.1050" timestamp="1589898069623" />
-    <state width="1877" height="474" key="GridCell.Tab.0.bottom" timestamp="1590756699529">
+    <state width="1877" height="242" key="GridCell.Tab.0.bottom" timestamp="1590763709580">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="474" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1590756699529" />
-    <state width="1877" height="474" key="GridCell.Tab.0.center" timestamp="1590756699529">
+    <state width="1877" height="242" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1590763709580" />
+    <state width="1877" height="242" key="GridCell.Tab.0.center" timestamp="1590763709580">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="474" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1590756699529" />
-    <state width="1877" height="474" key="GridCell.Tab.0.left" timestamp="1590756699529">
+    <state width="1877" height="242" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1590763709580" />
+    <state width="1877" height="242" key="GridCell.Tab.0.left" timestamp="1590763709580">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="474" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1590756699529" />
-    <state width="1877" height="474" key="GridCell.Tab.0.right" timestamp="1590756699529">
+    <state width="1877" height="242" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1590763709580" />
+    <state width="1877" height="242" key="GridCell.Tab.0.right" timestamp="1590763709580">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="474" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1590756699529" />
+    <state width="1877" height="242" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1590763709580" />
     <state x="533" y="239" key="RollbackChangesDialog" timestamp="1589836115221">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="533" y="239" key="RollbackChangesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1589836115221" />
-    <state x="1003" y="333" width="672" height="677" key="run.anything.popup" timestamp="1590755272033">
+    <state x="1003" y="333" width="672" height="677" key="run.anything.popup" timestamp="1590763709599">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="1003" y="333" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1590755272033" />
+    <state x="1003" y="333" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1590763709599" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1589895556610">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

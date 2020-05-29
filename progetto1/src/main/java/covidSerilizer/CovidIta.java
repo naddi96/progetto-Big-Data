@@ -5,12 +5,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class CovidIta implements Serializable {
 
     private int positive;
-    private int year;
-    private int week;
+    private String year;
+    private String week;
     private int tampons;
 
 
@@ -37,17 +38,20 @@ public class CovidIta implements Serializable {
         cal.add(Calendar.DATE,startingDay);   //calcolo la settimana in base al giorno della settimana di partenza
 
 
-        this.year=cal.get(Calendar.YEAR);
-        this.week=cal.get(Calendar.WEEK_OF_YEAR);
+        this.year=String.valueOf(cal.get(Calendar.YEAR));
+        this.week=String.valueOf(cal.get(Calendar.WEEK_OF_YEAR));
 
-        SimpleDateFormat simpleDateformat = new SimpleDateFormat("E"); // the day of the week abbreviated
+        SimpleDateFormat simpleDateformat = new SimpleDateFormat("E", Locale.ITALY); // the day of the week abbreviated
         String day = simpleDateformat.format(cal.getTime());
+        this.week=String.valueOf(simpleDateformat.getCalendar().get(Calendar.WEEK_OF_YEAR));
+
         if (!(day.equals("lun")|| day.equals("dom"))) {
             this.tampons=-1;
             this.positive=-1;
-            this.week=-1;
+            this.week="-1";
 
         }
+
 
     }
 
@@ -61,15 +65,15 @@ public class CovidIta implements Serializable {
         return positive;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
 
-    public int getWeek() {return week;}
+    public String getWeek() {return week;}
 
     @Override
     public String toString() {
-        return String.valueOf(year)+String.valueOf(week);
+        return year+week;
     }
 }

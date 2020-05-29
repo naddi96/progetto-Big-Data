@@ -13,6 +13,8 @@ import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import covidSerilizer.CovidIta;
 import parseParquet.ParqueIta;
@@ -72,11 +74,12 @@ public class Query1 {
 
         //considero solo i giorni di inizio e fine settimana
                     //week ,    positive,tampons
-        JavaPairRDD<Integer, Tuple3<Float,Float,Boolean>> pairs =
+        JavaPairRDD<String, Tuple3<Float,Float,Boolean>> pairs =
                 parquetFileDF.flatMapToPair(line -> ParqueIta.parseRow(line,startingDay));
 
+
                    //week ,      positive,tampons
-        JavaPairRDD<Integer, Tuple3<Float,Float,Boolean>> avg_week =
+        JavaPairRDD<String, Tuple3<Float,Float,Boolean>> avg_week =
                 pairs.reduceByKey((x, y) ->mediaOutput(x,y)).filter(f-> f._2._3().equals(true) );
 
 
@@ -85,7 +88,7 @@ public class Query1 {
 
         //creazione dello schema
         StructField[] structFields = new StructField[]{
-                new StructField("AnnoSettimana", DataTypes.IntegerType, true, Metadata.empty()),
+                new StructField("AnnoSettimana", DataTypes.StringType, true, Metadata.empty()),
                 new StructField("guariti", DataTypes.FloatType, true, Metadata.empty()),
                 new StructField("tamponi", DataTypes.FloatType, true, Metadata.empty())
 
@@ -96,6 +99,8 @@ public class Query1 {
         Dataset<Row> output = spark.createDataFrame(rowRDD, structType);
         output.write().mode("overwrite").parquet(pathToOutput);
         long endQueryPro = System.nanoTime();
+
+
 
         long sparkTimeNano= ( endTimeSparkConf - startTimeSparkConf ) ;
         float sparkTimeSec= (float) ( endTimeSparkConf - startTimeSparkConf )/1000000000 ;

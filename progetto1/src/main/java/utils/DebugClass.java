@@ -12,12 +12,13 @@ public class DebugClass {
 
     private static int startingDay=0;
 
-    private static String firstDate="2020-02-24";
+    private static String firstDate="2020-03-01T18:00:00".substring(0,10);;
     public static void main(String[] args) throws InterruptedException {
         long startTime = System.nanoTime();
 
 
         String format = "yyyy-MM-dd";
+        System.out.println(firstDate);
         SimpleDateFormat df = new SimpleDateFormat(format);
         Date dat = null;
         try {
@@ -26,8 +27,6 @@ public class DebugClass {
             e.printStackTrace();
         }
 
-        System.out.println("AAAAAAAAAAAAAAAAAa");
-
         Calendar c = Calendar.getInstance();
         c.setTime(dat);
         int i=0;
@@ -35,11 +34,14 @@ public class DebugClass {
 
             System.out.println("settimana" + c.get(Calendar.WEEK_OF_YEAR));
             System.out.println("giorno set" + c.get(Calendar.DAY_OF_WEEK));
-            SimpleDateFormat simpleDateformat = new SimpleDateFormat("E",Locale.US); // the day of the week abbreviated
+            SimpleDateFormat simpleDateformat = new SimpleDateFormat("E",Locale.ITALY); // the day of the week abbreviated
 
             System.out.println(simpleDateformat.format(c.getTime()));
+            simpleDateformat.getCalendar().get(Calendar.DAY_OF_WEEK);
+            System.out.println(c.getTime());
             System.out.println("---------------------------------");
             c.add(Calendar.DATE, 1);
+
             i++;
         }
     }
