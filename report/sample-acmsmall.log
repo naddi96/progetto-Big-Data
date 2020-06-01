@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.5.25)  1 JUN 2020 10:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7380 64-bit) (preloaded format=pdflatex 2020.5.25)  1 JUN 2020 13:57
 entering extended mode
 **./sample-acmsmall.tex
 (sample-acmsmall.tex
@@ -1056,22 +1056,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 214--218
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3.3 <./sistema.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 224--239
+Underfull \hbox (badness 10000) in paragraph at lines 224--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--239
+Underfull \hbox (badness 10000) in paragraph at lines 224--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--239
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--239
+Underfull \hbox (badness 10000) in paragraph at lines 224--238
 
  []
 
@@ -1082,20 +1077,20 @@ Class acmart Warning: ACM keywords are mandatory for papers over two pages.
 Class acmart Warning: CCS concepts are mandatory for papers over two pages.
 
 [4.4 <./livy.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 254.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 254.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 253.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 253.
  (sample-acmsmall.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 254.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 254.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 253.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 253.
 Package rerunfilecheck Info: File `sample-acmsmall.out' has not changed.
 (rerunfilecheck)             Checksum: C02FE87F9F30EC75D987BFAF1A5124E9;923.
  ) 
 Here is how much of TeX's memory you used:
- 18379 strings out of 480898
- 280446 string characters out of 2898309
+ 18382 strings out of 480898
+ 280521 string characters out of 2898309
  556213 words of memory out of 3000000
  33575 multiletter control sequences out of 15000+200000
- 647946 words of font info for 187 fonts, out of 3000000 for 9000
+ 648219 words of font info for 189 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
  63i,11n,100p,808b,453s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/naddi/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/l
@@ -1109,7 +1104,7 @@ numTB.pfb><C:/Users/naddi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
 libertine/LinBiolinumTI.pfb><C:/Users/naddi/AppData/Local/Programs/MiKTeX 2.9/f
 onts/type1/public/libertine/LinLibertineT.pfb><C:/Users/naddi/AppData/Local/Pro
 grams/MiKTeX 2.9/fonts/type1/public/libertine/LinLibertineTB.pfb>
-Output written on sample-acmsmall.pdf (4 pages, 556741 bytes).
+Output written on sample-acmsmall.pdf (4 pages, 556778 bytes).
 PDF statistics:
  113 PDF objects out of 1000 (max. 8388607)
  28 named destinations out of 1000 (max. 500000)
