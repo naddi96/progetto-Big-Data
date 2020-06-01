@@ -223,21 +223,21 @@ successivamente NiFi ogni 5 secondi controlla con una get a Livy lo stato del Jo
 \subsubsection{Hbase: Storage}
 Per il layer di storage è stato utilizzato Hbase una volta che Spark ha finito la computazione Nifi si occupa di prendere i file parquet salvati 
 da spark su HDFS processarli come parquet specificare la colonna che si vuole come key e caricarli su hbase.
-Per la query1 come key è stata scelta la data (formato annoSettimana) in modo tale da ottimizzare lo scan in quanto i dati saranno memorizzati su posizioni vicine memoria, di contro qualora i dati dovessero diventare troppi si andrebbe a sovraccaricare un singolo region Server però considerata la quantità dei dati non è questo il caso.  Per la seconda query dopo il processamento abbiamo righe di questo tipo :
+Per la query1 come key è stata scelta la data (formato annoSettimana) questo approccio potrebbe causare hot-spotting su un singolo region server ma considerata la dimensione del dataset non ci dovrebbero essere problemi, per dataset di dimensioni più grandi un'alternativa è scegliere per ogni riga una lettera random e concatenarla all'inizio della chiave in questo modo distribuiamo il dataset su più region server. Per la seconda query dopo il processamento abbiamo righe di questo tipo :
 \\
 \\
 \hspace{40mm}\begin{tabular}{|l|l|l|l|}
-\hline
-AAAEuropa  & europa  & MAX\_WEEK & ... \\ \hline
-ZZZamerica & america & MIN\_WEEK & ... \\ \hline
-IIIEuropa  & europa  & DEV\_WEEK & ... \\ \hline
-RRREuropa  & europa  & AVG\_WEEK & ... \\ \hline
+	\hline
+	AAAEuropa  & europa  & MAX\_WEEK & ... \\ \hline
+	ZZZamerica & america & MIN\_WEEK & ... \\ \hline
+	IIIEuropa  & europa  & DEV\_WEEK & ... \\ \hline
+	RRREuropa  & europa  & AVG\_WEEK & ... \\ \hline
 \end{tabular}
 \\
 \\
 \\
 
- come key è stato scelto il campo della prima colonna, in questo modo le righe con la stessa funzione statica (cioè tutte le righe con il campo MAX\_WEEK inizieranno con AAA nella prima colonna) si troveranno sullo stesso regionserver e vicine tra loro ,andando ad ottimizare lo scan di tutti i continenti con una determinata funzione statistica
+ come key è stato scelto il campo della prima colonna, in questo modo distribuiamo il dataset in modo equo sui vari region server. Le righe con la stessa funzione statica (cioè tutte le righe con il campo MAX\_WEEK inizieranno con AAA nella prima colonna).
 
 
 
